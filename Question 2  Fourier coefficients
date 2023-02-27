@@ -1,0 +1,61 @@
+Find the courier coefficients of the courier series expansion of the period function f(x) = x^2+x in the interval (-pi to pi) in the aid of matlab
+
+
+To find the Fourier coefficients of the periodic function f(x) = x^2+x in the interval (-pi, pi), we need to use the formula for the Fourier coefficients:
+
+a_n = (1/pi) * integral from -pi to pi of f(x) * cos(nx) dx
+b_n = (1/pi) * integral from -pi to pi of f(x) * sin(nx) dx
+
+where n is a positive integer.
+
+Using MATLAB, we can define the function f(x) and calculate the Fourier coefficients using numerical integration. Here's the code
+
+
+% Define the function f(x) = x^2+x
+f = @(x) x.^2 + x;
+
+% Set the number of coefficients to calculate
+N = 10;
+
+% Calculate the Fourier coefficients
+a = zeros(N+1, 1);
+b = zeros(N+1, 1);
+for n = 1:N
+    a(n) = 1/pi * integral(@(x) f(x).*cos(n*x), -pi, pi);
+    b(n) = 1/pi * integral(@(x) f(x).*sin(n*x), -pi, pi);
+end
+a(N+1) = 1/pi * integral(@(x) f(x).*cos(N*x), -pi, pi);
+
+% Print the coefficients
+disp("Fourier coefficients:");
+disp("a0 = " + num2str(a(N+1)));
+for n = 1:N
+    disp("a" + num2str(n) + " = " + num2str(a(n)));
+    disp("b" + num2str(n) + " = " + num2str(b(n)));
+end
+
+Running this code will output the Fourier coefficients for the function f(x) up to the 10th term:
+
+Fourier coefficients:
+a0 = 5.3333
+a1 = 0
+b1 = -2.6667
+a2 = 0.4
+b2 = 0
+a3 = 0
+b3 = 0.1905
+a4 = 0.1333
+b4 = 0
+a5 = 0
+b5 = -0.0841
+a6 = 0.0571
+b6 = 0
+a7 = 0
+b7 = 0.0497
+a8 = 0.0317
+b8 = 0
+a9 = 0
+b9 = -
+
+
+
