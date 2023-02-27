@@ -1,0 +1,2 @@
+Solve the differential equation using matlab d^2*y/dx^2 +2dy/dt+2y=e^-t given y(0) = -1 and dy/dt lim 0 using Laplace transform with the aid of Matalab 
+
